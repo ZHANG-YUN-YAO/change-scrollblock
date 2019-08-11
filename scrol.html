@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>滚动条高度js</title>
+  <link rel="stylesheet" href="./css/scrol.css">
+  <style>
+    body {
+      background: #ccc;
+    }
+    .scroll-demo {
+      width: 540px;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      margin: 30px auto;
+    }
+    /* 标签切换区 */
+    .scroll-tab {
+      height: 34px;
+      border-bottom: 1px solid #e5e5e5;
+      color: #666;
+      background: #f8f8f8;
+    }
+    .scroll-tab .tab-item {
+      float: left;
+      font: 14px/34px "Microsoft Yahei";
+      height: 34px;
+      text-align: center;
+      border-right: 1px solid #e5e5e5;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .scroll-tab .tab-active {
+      color: #00be3c;
+      background: #fff;
+      border-top: 2px solid #00be3c;
+    }
+    /* 滚动内容区 */
+    .scroll-wrap {
+      position: relative;
+      width: 100%;
+      height: 300px;
+    }
+    /* 滚动内容 */
+    .scroll-wrap .scroll-cont {
+      height: 100%;
+      padding: 0 15px;
+      overflow: hidden;
+    }
+    .scroll-wrap .scroll-cont h3 {
+      font: 16px/3 "Microsoft Yahei";
+      text-align: center;
+    }
+    .scroll-wrap .scroll-cont p {
+      font-size: 14px;
+      line-height: 20px;
+      text-indent: 2em;
+      margin-bottom: 10px;
+    }
+    /* 防止margin合并 */
+    .scroll-wrap .scroll-cont .scroll-ol {
+      padding-bottom: 1px;
+    }
+    /* 滚动条 */
+    .scroll-wrap .scroll-bar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 50%;
+      background-color: #eaeaea;
+    }
+    /* 滑块 */
+    .scroll-wrap .scroll-slider {
+      position: absolute;
+      top: 0;
+      left: 1px;
+      width: 8px;
+      height: 40px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!--  示例容器 -->
+  <div class="scroll-demo">
+    <!-- 标签切换区 -->
+    <ul class="scroll-tab clearfix">
+      <li class="tab-item tab-active">第一篇</li>
+      <li class="tab-item">第二篇</li>
+      <li class="tab-item">第三篇</li>
+      <li class="tab-item">第四篇</li>
+    </ul>
+    <!-- 滚动内容区 -->
+    <div class="scroll-wrap">
+      <!-- 滚动内容 -->
+      <div class="scroll-cont">
+        <h3 class="anchor">春天来了</h3>
+        <div class="scroll-ol">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+
+        </div>
+        <h3 class="anchor">夏天来了</h3>
+        <div class="scroll-ol">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+
+        </div>
+        <h3 class="anchor">秋天来了</h3>
+        <div class="scroll-ol">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+
+        </div>
+        <h3 class="anchor">冬天来了</h3>
+        <div class="scroll-ol">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas dicta qui dignissimos magnam ducimus accusantium
+            incidunt perspiciatis quod. Possimus voluptas eius nulla eum iusto a nam sapiente obcaecati ullam?</p>
+        </div>
+        <div class="correct-bot"></div>
+      </div>
+      <!-- 滚动条 -->
+      <div class="scroll-bar">
+        <!-- 滚动滑块儿 -->
+        <div class="scroll-slider"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-3.3.1.js"></script>
+  <script src="./js/slider.js"></script>
+  <script>
+    new CusScrollBar({
+      contSelector: '.scroll-cont', // 可视区
+      barSelector: '.scroll-bar', // 滚动条选择器
+      sliderSelector: '.scroll-slider' //滚动滑块儿选择器
+    });
+  </script>
+</body>
+
+</html>
